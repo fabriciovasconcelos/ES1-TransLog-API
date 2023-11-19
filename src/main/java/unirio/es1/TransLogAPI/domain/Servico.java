@@ -23,7 +23,7 @@ public class Servico {
     @JoinColumn(name = "produto_id")
     private Produto produto;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "pagamento_id")
     private Pagamento pagamento;
 
