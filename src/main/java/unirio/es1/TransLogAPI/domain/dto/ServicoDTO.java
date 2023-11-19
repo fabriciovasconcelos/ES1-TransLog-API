@@ -14,14 +14,17 @@ public class ServicoDTO {
 
     private Long pagamentoId;
 
+    private String status;
+
     public ServicoDTO() {super();}
 
-    public ServicoDTO(String descricao, Long enderecoBuscaId, Long enderecoEntregaId, Long produtoId, Long pagamentoId) {
+    public ServicoDTO(String descricao, Long enderecoBuscaId, Long enderecoEntregaId, Long produtoId, Long pagamentoId, String status) {
         this.descricao = descricao;
         this.enderecoBuscaId = enderecoBuscaId;
         this.enderecoEntregaId = enderecoEntregaId;
         this.produtoId = produtoId;
         this.pagamentoId = pagamentoId;
+        this.status = status;
     }
 
 
@@ -59,5 +62,13 @@ public class ServicoDTO {
 
     public void setPagamentoId(Long pagamentoId) {
         this.pagamentoId = pagamentoId;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

@@ -9,6 +9,7 @@ import unirio.es1.TransLogAPI.domain.dto.ServicoDTO;
 import unirio.es1.TransLogAPI.service.ServicoService;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("api/servico")
@@ -23,9 +24,18 @@ public class ServicoController {
 
     @PostMapping
     public Servico post(@RequestBody ServicoDTO dto){
-
         Servico servico = converter.dtoToEntity(dto);
         return service.save(servico);
+    }
+
+    @PutMapping("/{id}/avaliar-orcamento")
+    public ResponseEntity<String> avaliarOrcamento(@PathVariable Long id, @RequestParam String status){
+        try {
+            service.atualizarStatus(id, status);
+            return ResponseEntity.ok("Status atualizado com sucesso");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erro ao atualizar status: " + e.getMessage());
+        }
     }
 
     @GetMapping("/list")

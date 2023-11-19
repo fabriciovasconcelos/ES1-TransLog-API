@@ -2,6 +2,12 @@ package unirio.es1.TransLogAPI.domain;
 
 import jakarta.persistence.*;
 
+enum Status {
+    APROVADO,
+    REJEITADO,
+    AGUARDANDO,
+    REJEITADO_NA_COLETA
+}
 @Entity
 @Table(name = "servico")
 public class Servico {
@@ -27,10 +33,14 @@ public class Servico {
     @JoinColumn(name = "pagamento_id")
     private Pagamento pagamento;
 
+    @Enumerated(EnumType.STRING)
+    private Status status;
+
     public Servico(){}
 
-    public Servico(String descricao) {
+    public Servico(String descricao, Status status) {
         this.descricao = descricao;
+        this.status = status;
     }
 
     public Long getId() {
@@ -79,5 +89,13 @@ public class Servico {
 
     public void setPagamento(Pagamento pagamento) {
         this.pagamento = pagamento;
+    }
+
+    public String getStatus() {
+        return status.name();
+    }
+
+    public void setStatus(String status) {
+        this.status = Status.valueOf(status);
     }
 }

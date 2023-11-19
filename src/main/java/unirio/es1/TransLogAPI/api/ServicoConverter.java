@@ -31,6 +31,7 @@ public class ServicoConverter {
         dto.setEnderecoEntregaId(servico.getEnderecoEntrega().getId());
         dto.setProdutoId(servico.getProduto().getId());
         dto.setPagamentoId(servico.getPagamento().getId());
+        dto.setStatus(servico.getStatus());
 
         return dto;
     }
@@ -44,6 +45,7 @@ public class ServicoConverter {
         servico.setEnderecoEntrega(enderecoService.getById(dto.getEnderecoEntregaId()).get());
         servico.setProduto(produtoService.getById(dto.getProdutoId()).get());
         servico.setPagamento(pagamentoService.getById(dto.getPagamentoId()).get());
+        servico.setStatus(dto.getStatus());
         return servico;
 
     }

@@ -1,5 +1,3 @@
-DROP TABLE IF EXISTS pagamento;
-
 CREATE TABLE IF NOT EXISTS endereco(
     id INT AUTO_INCREMENT NOT NULL,
     estado VARCHAR(30) NOT NULL,
@@ -35,6 +33,7 @@ CREATE TABLE IF NOT EXISTS servico(
     endereco_entrega_id INT NOT NULL,
     produto_id INT NOT NULL,
     pagamento_id INT NOT NULL,
+    status VARCHAR(20) NOT NULL,
     PRIMARY KEY(id),
     FOREIGN KEY(endereco_busca_id) REFERENCES endereco(id),
     FOREIGN KEY(endereco_entrega_id) REFERENCES endereco(id),
