@@ -23,6 +23,10 @@ public class Servico {
     @JoinColumn(name = "produto_id")
     private Produto produto;
 
+    @ManyToOne
+    @JoinColumn(name = "pagamento_id")
+    private Pagamento pagamento;
+
     public Servico(){}
 
     public Servico(String descricao) {
@@ -67,5 +71,13 @@ public class Servico {
 
     public void setProduto(Produto produto) {
         this.produto = produto;
+    }
+
+    public Pagamento getPagamento() {
+        return pagamento;
+    }
+
+    public void setPagamento(Pagamento pagamento) {
+        this.pagamento = pagamento;
     }
 }

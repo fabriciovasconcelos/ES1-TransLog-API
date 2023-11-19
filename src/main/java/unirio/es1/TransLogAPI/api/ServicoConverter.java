@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 import unirio.es1.TransLogAPI.domain.Servico;
 import unirio.es1.TransLogAPI.domain.dto.ServicoDTO;
 import unirio.es1.TransLogAPI.service.EnderecoService;
+import unirio.es1.TransLogAPI.service.PagamentoService;
 import unirio.es1.TransLogAPI.service.ProdutoService;
 import unirio.es1.TransLogAPI.service.ServicoService;
 
@@ -17,6 +18,9 @@ public class ServicoConverter {
     private ProdutoService produtoService;
 
     @Autowired
+    private PagamentoService pagamentoService;
+
+    @Autowired
     private ServicoService servicoService;
 
     public ServicoDTO entityToDTO(Servico servico){
@@ -26,6 +30,7 @@ public class ServicoConverter {
         dto.setEnderecoBuscaId(servico.getEnderecoBusca().getId());
         dto.setEnderecoEntregaId(servico.getEnderecoEntrega().getId());
         dto.setProdutoId(servico.getProduto().getId());
+        dto.setPagamentoId(servico.getPagamento().getId());
 
         return dto;
     }
@@ -37,10 +42,8 @@ public class ServicoConverter {
         servico.setDescricao(dto.getDescricao());
         servico.setEnderecoBusca(enderecoService.getById(dto.getEnderecoBuscaId()).get());
         servico.setEnderecoEntrega(enderecoService.getById(dto.getEnderecoEntregaId()).get());
-
-        System.out.println(produtoService.getById(dto.getProdutoId()).get());
-
         servico.setProduto(produtoService.getById(dto.getProdutoId()).get());
+        servico.setPagamento(pagamentoService.getById(dto.getPagamentoId()).get());
         return servico;
 
     }

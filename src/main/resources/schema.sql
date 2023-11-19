@@ -1,6 +1,4 @@
-DROP TABLE endereco;
-DROP TABLE servico;
-
+DROP TABLE IF EXISTS pagamento;
 
 CREATE TABLE IF NOT EXISTS endereco(
     id INT AUTO_INCREMENT NOT NULL,
@@ -19,8 +17,16 @@ CREATE TABLE IF NOT EXISTS produto(
     largura INT NOT NULL,
     altura INT NOT NULL,
     comprimento INT NOT NULL,
-    peso DOUBLE NOT NULL
+    peso DOUBLE NOT NULL,
+    PRIMARY KEY(id)
 );
+
+CREATE TABLE IF NOT EXISTS pagamento(
+    id INT AUTO_INCREMENT NOT NULL,
+    metodo ENUM('DEBITO', 'CREDITO', 'BOLETO', 'PIX'),
+    PRIMARY KEY(id)
+);
+
 
 CREATE TABLE IF NOT EXISTS servico(
     id INT AUTO_INCREMENT NOT NULL,
@@ -28,10 +34,12 @@ CREATE TABLE IF NOT EXISTS servico(
     endereco_busca_id INT NOT NULL,
     endereco_entrega_id INT NOT NULL,
     produto_id INT NOT NULL,
+    pagamento_id INT NOT NULL,
     PRIMARY KEY(id),
     FOREIGN KEY(endereco_busca_id) REFERENCES endereco(id),
     FOREIGN KEY(endereco_entrega_id) REFERENCES endereco(id),
-    FOREIGN KEY(produto_id) REFERENCES produto(id)
+    FOREIGN KEY(produto_id) REFERENCES produto(id),
+    FOREIGN KEY(pagamento_id) REFERENCES pagamento(id)
 );
 
 CREATE TABLE IF NOT EXISTS orcamento(
@@ -44,3 +52,4 @@ CREATE TABLE IF NOT EXISTS orcamento(
    PRIMARY KEY(id),
    FOREIGN KEY(servico_id) REFERENCES servico(id)
 );
+

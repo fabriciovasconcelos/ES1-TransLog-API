@@ -12,13 +12,16 @@ public class ServicoDTO {
 
     private Long produtoId;
 
+    private Long pagamentoId;
+
     public ServicoDTO() {super();}
 
-    public ServicoDTO(String descricao, Long enderecoBuscaId, Long enderecoEntregaId, Long produtoId) {
+    public ServicoDTO(String descricao, Long enderecoBuscaId, Long enderecoEntregaId, Long produtoId, Long pagamentoId) {
         this.descricao = descricao;
         this.enderecoBuscaId = enderecoBuscaId;
         this.enderecoEntregaId = enderecoEntregaId;
         this.produtoId = produtoId;
+        this.pagamentoId = pagamentoId;
     }
 
 
@@ -46,11 +49,15 @@ public class ServicoDTO {
         this.enderecoEntregaId = enderecoEntregaId;
     }
 
-    public Long getProdutoId() {
-        return produtoId;
+    public Long getProdutoId() {return produtoId;}
+
+    public void setProdutoId(Long produtoId) {this.produtoId = produtoId;}
+
+    public Long getPagamentoId() {
+        return pagamentoId;
     }
 
-    public void setProdutoId(Long produtoId) {
-        this.produtoId = produtoId;
+    public void setPagamentoId(Long pagamentoId) {
+        this.pagamentoId = pagamentoId;
     }
 }
