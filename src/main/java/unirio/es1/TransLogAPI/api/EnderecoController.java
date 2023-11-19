@@ -9,7 +9,7 @@ import unirio.es1.TransLogAPI.service.EnderecoService;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("api/v0/endereco")
+@RequestMapping("api/endereco")
 public class EnderecoController {
 
     @Autowired

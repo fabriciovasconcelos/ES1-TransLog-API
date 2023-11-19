@@ -10,7 +10,6 @@ public class Servico {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Double peso;
     private String descricao;
     @ManyToOne
     @JoinColumn(name = "endereco_busca_id")
@@ -20,20 +19,14 @@ public class Servico {
     @JoinColumn(name = "endereco_entrega_id")
     private Endereco enderecoEntrega;
 
-
-    // Dimensoes
-    private Integer largura;
-    private Integer altura;
-    private Integer comprimento;
+    @OneToOne
+    @JoinColumn(name = "produto_id")
+    private Produto produto;
 
     public Servico(){}
 
-    public Servico(Double peso, String descricao, Integer largura, Integer altura, Integer comprimento) {
-        this.peso = peso;
+    public Servico(String descricao) {
         this.descricao = descricao;
-        this.largura = largura;
-        this.altura = altura;
-        this.comprimento = comprimento;
     }
 
     public Long getId() {
@@ -42,14 +35,6 @@ public class Servico {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Double getPeso() {
-        return peso;
-    }
-
-    public void setPeso(Double peso) {
-        this.peso = peso;
     }
 
     public String getDescricao() {
@@ -76,27 +61,11 @@ public class Servico {
         this.enderecoEntrega = enderecoEntrega;
     }
 
-    public Integer getLargura() {
-        return largura;
+    public Produto getProduto() {
+        return produto;
     }
 
-    public void setLargura(Integer largura) {
-        this.largura = largura;
-    }
-
-    public Integer getAltura() {
-        return altura;
-    }
-
-    public void setAltura(Integer altura) {
-        this.altura = altura;
-    }
-
-    public Integer getComprimento() {
-        return comprimento;
-    }
-
-    public void setComprimento(Integer comprimento) {
-        this.comprimento = comprimento;
+    public void setProduto(Produto produto) {
+        this.produto = produto;
     }
 }

@@ -4,37 +4,23 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class ServicoDTO {
-    private Double peso;
     private String descricao;
 
     private Long enderecoBuscaId;
 
     private Long enderecoEntregaId;
 
-    // Dimensoes
-    private Integer largura;
-    private Integer altura;
-    private Integer comprimento;
+    private Long produtoId;
 
     public ServicoDTO() {super();}
 
-    public ServicoDTO(Double peso, String descricao, Long enderecoBuscaId, Long enderecoEntregaId, Integer largura, Integer altura, Integer comprimento) {
-        this.peso = peso;
+    public ServicoDTO(String descricao, Long enderecoBuscaId, Long enderecoEntregaId, Long produtoId) {
         this.descricao = descricao;
         this.enderecoBuscaId = enderecoBuscaId;
         this.enderecoEntregaId = enderecoEntregaId;
-        this.largura = largura;
-        this.altura = altura;
-        this.comprimento = comprimento;
+        this.produtoId = produtoId;
     }
 
-    public Double getPeso() {
-        return peso;
-    }
-
-    public void setPeso(Double peso) {
-        this.peso = peso;
-    }
 
     public String getDescricao() {
         return descricao;
@@ -60,27 +46,11 @@ public class ServicoDTO {
         this.enderecoEntregaId = enderecoEntregaId;
     }
 
-    public Integer getLargura() {
-        return largura;
+    public Long getProdutoId() {
+        return produtoId;
     }
 
-    public void setLargura(Integer largura) {
-        this.largura = largura;
-    }
-
-    public Integer getAltura() {
-        return altura;
-    }
-
-    public void setAltura(Integer altura) {
-        this.altura = altura;
-    }
-
-    public Integer getComprimento() {
-        return comprimento;
-    }
-
-    public void setComprimento(Integer comprimento) {
-        this.comprimento = comprimento;
+    public void setProdutoId(Long produtoId) {
+        this.produtoId = produtoId;
     }
 }

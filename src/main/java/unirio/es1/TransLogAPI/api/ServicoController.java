@@ -11,7 +11,7 @@ import unirio.es1.TransLogAPI.service.ServicoService;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/v0/servico")
+@RequestMapping("api/servico")
 public class ServicoController {
 
 

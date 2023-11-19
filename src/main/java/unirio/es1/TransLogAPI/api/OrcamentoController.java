@@ -11,7 +11,7 @@ import unirio.es1.TransLogAPI.service.OrcamentoService;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/v0/orcamento")
+@RequestMapping("api/orcamento")
 public class OrcamentoController {
 
     @Autowired

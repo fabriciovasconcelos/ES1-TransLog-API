@@ -14,18 +14,24 @@ CREATE TABLE IF NOT EXISTS endereco(
     PRIMARY KEY(id)
 );
 
-CREATE TABLE IF NOT EXISTS servico(
+CREATE TABLE IF NOT EXISTS produto(
     id INT AUTO_INCREMENT NOT NULL,
-    peso DOUBLE NOT NULL,
-    descricao VARCHAR(250) NOT NULL,
-    endereco_busca_id INT NOT NULL,
-    endereco_entrega_id INT NOT NULL,
     largura INT NOT NULL,
     altura INT NOT NULL,
     comprimento INT NOT NULL,
+    peso DOUBLE NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS servico(
+    id INT AUTO_INCREMENT NOT NULL,
+    descricao VARCHAR(250) NOT NULL,
+    endereco_busca_id INT NOT NULL,
+    endereco_entrega_id INT NOT NULL,
+    produto_id INT NOT NULL,
     PRIMARY KEY(id),
     FOREIGN KEY(endereco_busca_id) REFERENCES endereco(id),
-    FOREIGN KEY(endereco_entrega_id) REFERENCES endereco(id)
+    FOREIGN KEY(endereco_entrega_id) REFERENCES endereco(id),
+    FOREIGN KEY(produto_id) REFERENCES produto(id)
 );
 
 CREATE TABLE IF NOT EXISTS orcamento(
