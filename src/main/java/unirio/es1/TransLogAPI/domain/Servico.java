@@ -33,6 +33,10 @@ public class Servico {
     @JoinColumn(name = "pagamento_id")
     private Pagamento pagamento;
 
+    @ManyToOne
+    @JoinColumn(name = "remetente_id")
+    private Usuario remetente;
+
     @Enumerated(EnumType.STRING)
     private Status status;
 
@@ -81,6 +85,14 @@ public class Servico {
 
     public void setProduto(Produto produto) {
         this.produto = produto;
+    }
+
+    public Usuario getRemetente() {
+        return remetente;
+    }
+
+    public void setRemetente(Usuario remetente) {
+        this.remetente = remetente;
     }
 
     public Pagamento getPagamento() {

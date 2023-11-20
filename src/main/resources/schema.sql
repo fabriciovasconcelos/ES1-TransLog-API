@@ -25,6 +25,22 @@ CREATE TABLE IF NOT EXISTS pagamento(
     PRIMARY KEY(id)
 );
 
+CREATE TABLE IF NOT EXISTS usuario(
+    id BIGINT AUTO_INCREMENT NOT NULL,
+    nome VARCHAR(128),
+    email VARCHAR(128),
+    telefone VARCHAR(11),
+    cpf VARCHAR(11),
+    senha VARCHAR(255),
+    PRIMARY KEY(id)
+);
+
+CREATE TABLE IF NOT EXISTS usuario_cargo(
+    usuario_id BIGINT NOT NULL,
+    cargo INT NOT NULL,
+    PRIMARY KEY(usuario_id, cargo),
+    FOREIGN KEY(usuario_id) REFERENCES usuario(id)
+);
 
 CREATE TABLE IF NOT EXISTS servico(
     id BIGINT AUTO_INCREMENT NOT NULL,
@@ -33,12 +49,14 @@ CREATE TABLE IF NOT EXISTS servico(
     endereco_entrega_id BIGINT NOT NULL,
     produto_id BIGINT NOT NULL,
     pagamento_id BIGINT NOT NULL,
+    remetente_id BIGINT NOT NULL,
     status VARCHAR(20) NOT NULL,
     PRIMARY KEY(id),
     FOREIGN KEY(endereco_busca_id) REFERENCES endereco(id),
     FOREIGN KEY(endereco_entrega_id) REFERENCES endereco(id),
     FOREIGN KEY(produto_id) REFERENCES produto(id),
-    FOREIGN KEY(pagamento_id) REFERENCES pagamento(id)
+    FOREIGN KEY(pagamento_id) REFERENCES pagamento(id),
+    FOREIGN KEY(remetente_id) REFERENCES usuario(id)
 );
 
 CREATE TABLE IF NOT EXISTS orcamento(
