@@ -37,6 +37,10 @@ public class Servico {
     @JoinColumn(name = "remetente_id")
     private Usuario remetente;
 
+    @ManyToOne
+    @JoinColumn(name = "destinatario_id")
+    private Destinatario destinatario;
+
     @Enumerated(EnumType.STRING)
     private Status status;
 
@@ -93,6 +97,18 @@ public class Servico {
 
     public void setRemetente(Usuario remetente) {
         this.remetente = remetente;
+    }
+
+    public Destinatario getDestinatario() {
+        return destinatario;
+    }
+
+    public void setDestinatario(Destinatario destinatario) {
+        this.destinatario = destinatario;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
     }
 
     public Pagamento getPagamento() {
