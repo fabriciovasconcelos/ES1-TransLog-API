@@ -1,6 +1,7 @@
 package unirio.es1.TransLogAPI.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import unirio.es1.TransLogAPI.domain.CargoEnum;
 import unirio.es1.TransLogAPI.domain.Usuario;
@@ -10,6 +11,8 @@ import java.util.Optional;
 
 @Service
 public class UsuarioService {
+    @Autowired
+    BCryptPasswordEncoder bCryptPasswordEncoder;
     @Autowired
     private UsuarioRepository usuarioRepository;
 
@@ -22,6 +25,7 @@ public class UsuarioService {
     }
 
     public Usuario save(Usuario usuario){
+        usuario.setSenha(this.bCryptPasswordEncoder.encode(usuario.getSenha()));
         return usuarioRepository.save(usuario);
     }
 }
