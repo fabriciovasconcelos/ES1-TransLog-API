@@ -4,10 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import unirio.es1.TransLogAPI.domain.Servico;
 import unirio.es1.TransLogAPI.domain.dto.ServicoDTO;
-import unirio.es1.TransLogAPI.service.EnderecoService;
-import unirio.es1.TransLogAPI.service.PagamentoService;
-import unirio.es1.TransLogAPI.service.ProdutoService;
-import unirio.es1.TransLogAPI.service.ServicoService;
+import unirio.es1.TransLogAPI.service.*;
 
 @Component
 public class ServicoConverter {
@@ -22,6 +19,12 @@ public class ServicoConverter {
 
     @Autowired
     private ServicoService servicoService;
+
+    @Autowired
+    private DestinatarioService destinatarioService;
+
+    @Autowired
+    private UsuarioService usuarioService;
 
     public ServicoDTO entityToDTO(Servico servico){
         ServicoDTO dto = new ServicoDTO();
@@ -45,9 +48,10 @@ public class ServicoConverter {
         servico.setEnderecoEntrega(enderecoService.getById(dto.getEnderecoEntregaId()).get());
         servico.setProduto(produtoService.getById(dto.getProdutoId()).get());
         servico.setPagamento(pagamentoService.getById(dto.getPagamentoId()).get());
+        servico.setDestinatario(destinatarioService.findById(dto.getDestinatarioId()).get());
+        servico.setRemetente(usuarioService.findById(dto.getRemetenteId()).get());
         servico.setStatus(dto.getStatus());
         return servico;
-
     }
 
 }
