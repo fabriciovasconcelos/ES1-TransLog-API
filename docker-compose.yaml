@@ -1,14 +1,21 @@
-version: "3.8"
+version: '3'
+
 services:
+  translogdb:
+    image: mysql:latest
+    container_name: translog_mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: translog_rpw
+      MYSQL_DATABASE: translog
+      MYSQL_USER: translog_user
+      MYSQL_PASSWORD: translog_pw
+    ports:
+      - "3306:3306"
+
   app:
     build: .
+    container_name: translog_api
     ports:
       - "8080:8080"
-  mysql:
-    image: mysql
-    environment:
-      - MYSQL_USER=root
-      - POSTGRES_PASSWORD=root
-      - MYSQL_DATABASE=translog
-    ports:
-      - '3306:3306'
+    depends_on:
+      - translogdb
