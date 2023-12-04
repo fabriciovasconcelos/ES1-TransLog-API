@@ -2,13 +2,15 @@ function show(servicos) {
     let tab = `<thead>
             <th scope="col">#</th>
             <th scope="col">Descrição</th>
+            <th scope="col">Status</th>
         </thead>`;
 
     for (let servico of servicos) {
         tab += `
             <tr>
                 <td scope="row">${servico.id}</td>
-                <td>${servico.descricao}</td>
+                <td scope="row">${servico.descricao}</td>
+                <td scope="row">${servico.status}</td>
             </tr>
         `;
     }
