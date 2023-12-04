@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="pt">
+<head>
+    <title>TransLog</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="css\style.css">
+    <script src="js/servico.js"></script>
+</head>
+
+<body>
+<div class="header">
+    <h1>TransLog</h1>
+    <p>é o transportas n tem jeito!</p>
+</div>
+<div class="topnav">
+    <a href="#">Link</a>
+    <a href="#">Link</a>
+    <a href="#">Link</a>
+    <a href="#" style="float:right">Link</a>
+</div>
+<div class="row">
+    <div class="column side"></div>
+    <div class="column middle">
+        <form class="pedido">
+            <h2>Informações do Produto</h2>
+            <div class="mb-3">
+                <label for="largura" class="form-label">Largura (cm)</label>
+                <input type="number" class="form-control" id="largura" placeholder="..." required="required">
+            </div>
+
+            <div class="mb-3">
+                <label for="altura" class="form-label">Altura (cm)</label>
+                <input type="number" class="form-control" id="altura" placeholder="..." required="required">
+            </div>
+
+            <div class="mb-3">
+                <label for="comprimento" class="form-label">Comprimento (cm)</label>
+                <input type="number" class="form-control" id="comprimento" placeholder="..." required="required">
+            </div>
+
+            <div class="mb-3">
+                <label for="peso" class="form-label">Peso (kg)</label>
+                <input type="number" step="0.01" class="form-control" id="peso" placeholder="..." required="required">
+            </div>
+
+            <h2>Destinatario</h2>
+            <div class="mb-3">
+                <label for="nomeDestinatario" class="form-label">Nome completo</label>
+                <input class="form-control" id="nomeDestinatario" placeholder="Nome" required="required">
+            </div>
+
+            <div class="mb-3">
+                <label for="emailDestinatario" class="form-label">Email</label>
+                <input type="email" class="form-control" id="emailDestinatario" placeholder="Email" required="required">
+            </div>
+
+            <div class="mb-3">
+                <label for="telefoneDestinatario" class="form-label">Telefone</label>
+                <input type="number" class="form-control" id="telefoneDestinatario" placeholder="Telefone" required="required">
+            </div>
+
+            <div class="mb-3">
+                <label for="pagamento" class="form-label">Método de pagamento</label>
+                <select id="pagamento" name="opcoes">
+                    <option value="1">Debito</option>
+                    <option value="2">Credito</option>
+                    <option value="3">Boleto</option>
+                    <option value="4">Pix</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label for="descricao" class="form-label">Descricao</label>
+                <textarea class="form-control" id="descricao" placeholder="Descricao" required="required"
+                rows="4" cols="50">
+                </textarea>
+            </div>
+            <button type="button" class="btn btn-primary" onclick="fazerPedido()">Submit</button>
+        </form>
+    </div>
+    <div class="column side"></div>
+</div>
+
+<script src="js/main.js" type="module"></script>
+</body>
+</html>
