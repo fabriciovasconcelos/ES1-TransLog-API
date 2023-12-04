@@ -34,11 +34,11 @@ public class SecurityConfig {
     private UserDetailsService userDetailsService;
 
     private static final String[] PUBLIC_MATCHERS = new String[]{
-            "/login"
+            "/"
     };
 
     private static final String[] PUBLIC_MATCHERS_POST = new String[]{
-            "/api/usuario"
+            "/login ","/api/usuario"
     };
 
     @Autowired
