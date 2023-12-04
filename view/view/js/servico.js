@@ -68,9 +68,6 @@ async function registrarServico(){
     let descricao = document.getElementById('descricao').value;
     let rementente = await getIdLogado();
 
-    console.log('r ' +  rementente);
-    console.log('r int ' + parseInt(rementente));
-
     const response = await fetch("http://localhost:8080/api/servico", {
         method: "POST",
         headers: new Headers({
@@ -89,6 +86,10 @@ async function registrarServico(){
             status: 'AGUARDANDO'
         }),
     });
+
+    if(response.ok){
+        window.location.href = "listagem.html";
+    }
 }
 
 async function registrarEndereco(){
@@ -155,6 +156,10 @@ async function registrarEndereco(){
 
     console.log('destino ' + destinoData.id);
     window.localStorage.setItem('Destino',destinoData.id);
+
+    if(origem.ok && destino.ok){
+        window.location.href = "pedido.html";
+    }
 }
 
 async function getIdLogado(){
