@@ -20,6 +20,10 @@ async function login(){
     let token = response.headers.get(key);
     console.log(token);
     window.localStorage.setItem(key, token);
+
+    if (response.ok) {
+        window.location.href = "listagem.html";
+    }
 }
 
 async function criarCadastro(){
@@ -47,8 +51,7 @@ async function criarCadastro(){
         }),
     });
 
-    let key = "Authorization";
-    let token = response.headers.get(key);
-    console.log(token);
-    window.localStorage.setItem(key, token);
+    if (response.ok) {
+        window.location.href = "index.html";
+    }
 }
