@@ -8,7 +8,6 @@ async function login(){
         method: "POST",
         headers: new Headers({
             "Content-Type": "application/json; charset=utf8",
-
             Accept: "application/json",
         }),
         body: JSON.stringify({
