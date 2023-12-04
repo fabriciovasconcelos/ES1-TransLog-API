@@ -1,5 +1,6 @@
 package unirio.es1.TransLogAPI.domain;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -60,6 +61,7 @@ public class Destinatario {
         this.telefone = telefone;
     }
 
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY )
     public List<Servico> getServicos() {
         return servicos;
     }
