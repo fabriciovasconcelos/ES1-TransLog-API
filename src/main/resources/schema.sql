@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS usuario(
     nome VARCHAR(128),
     email VARCHAR(128),
     telefone VARCHAR(11),
-    cpf VARCHAR(11),
+    cpf VARCHAR(11) UNIQUE,
     senha VARCHAR(255),
     PRIMARY KEY(id)
 );

@@ -24,4 +24,11 @@ public class UsuarioController {
         Optional<Usuario> usuario = service.findById(id);
         return usuario.isPresent() ? ResponseEntity.ok(usuario.get()) : ResponseEntity.notFound().build();
     }
+
+    @GetMapping
+    public ResponseEntity<Usuario> getLogado(){
+        Usuario usuario = service.findLogado();
+
+        return ResponseEntity.ok(usuario);
+    }
 }

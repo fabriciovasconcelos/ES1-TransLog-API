@@ -44,4 +44,10 @@ public class ServicoController {
     }
 
 
+    @GetMapping("/manager/{managerId}")
+    public ResponseEntity<List<Servico>> get(@PathVariable Long managerId){
+        List<Servico> servicos = service.getServicosByRemetente(managerId);
+
+        return ResponseEntity.ok(servicos);
+    }
 }

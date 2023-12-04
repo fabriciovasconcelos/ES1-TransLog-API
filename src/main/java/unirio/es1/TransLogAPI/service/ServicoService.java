@@ -39,4 +39,8 @@ public class ServicoService {
     public List<Servico> getServicos(){
         return repository.findAll();
     }
+
+    public List<Servico> getServicosByRemetente(Long managerId){
+        return repository.findAllByRemetenteId(managerId);
+    }
 }
