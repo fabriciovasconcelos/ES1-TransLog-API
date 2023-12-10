@@ -22,7 +22,7 @@ function show(enderecos) {
     document.getElementById("enderecos").innerHTML = line;
 }
 function cadastrarEndereco(){
-    window.location.href ='endereco.html'
+    window.location.href ='cadastrarEndereco.html'
 }
 
 async function deleteEndereco(enderecoId){
