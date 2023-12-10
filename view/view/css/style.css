@@ -55,7 +55,7 @@ body {
     text-decoration: none;
 }
   
-  .topnav a:hover {
+.topnav a:hover {
     background-color: #ddd;
     color: black;
 }
@@ -98,4 +98,14 @@ body {
   align-items: center;
 }
 
+.listagem {
+    padding-top: 2%;
+    padding-left: 4%;
+    padding-right: 4%;
+}
 
+.expandirInformacoes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

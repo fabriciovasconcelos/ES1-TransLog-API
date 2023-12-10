@@ -1,21 +1,24 @@
 function show(servicos) {
-    let tab = `<thead>
-            <th scope="col">#</th>
-            <th scope="col">Descrição</th>
-            <th scope="col">Status</th>
-        </thead>`;
-
-    for (let servico of servicos) {
-        tab += `
+    let line = "";
+    let i = 1;
+    servicos.forEach(servico => {
+        line += `
             <tr>
-                <td scope="row">${servico.id}</td>
+                <th scope="row">${i}</th>
                 <td scope="row">${servico.descricao}</td>
                 <td scope="row">${servico.status}</td>
+                <td scope ="row" class="expandirInformacoes">
+                    <button class="btn btn-info btn-sm" type="button" data-toggle="tooltip" data-placement="top" title="Info" onclick="openInfo(${servico.id})">
+                        Info
+                    </button>
+                </td>
             </tr>
         `;
-    }
-
-    document.getElementById("servicos").innerHTML = tab;
+        i++;
+        
+    });
+    
+    document.getElementById("servicos").innerHTML = line;
 }
 
 async function getServicos() {
@@ -49,3 +52,8 @@ document.addEventListener("DOMContentLoaded", function (event) {
 });
 
 getServicos();
+
+function openInfo (servicoId){
+
+    window.open("/ES1-TransLog-API/view/view/info.html");
+}
