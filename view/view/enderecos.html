@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="pt">
+<head>
+  <title>TransLog</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/enderecosSalvos.js"></script>
+</head>
+
+<body>
+  <nav>
+    <div class="topnav">
+      <a href="listagem.html">TransLog</a>
+      <a href="listagem.html">Lista de Pedidos</a>
+      <a href="endereco.html">Realizar Pedidos</a>
+  </div>
+  </nav>
+  <div class="listagemEnderecos">
+    <table class="table table-bordered">
+        <thead class="thead-dark ">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Endereco</th>
+                <th scope="col">CEP</th>
+                <th scope="col">Estado</th>
+                <th scope="col">Excuir</th>
+            </tr>
+        </thead>
+        <tbody id="enderecos">
+        </tbody>
+    </table>
+  </div>
+  <div class="cadastrarEndereco">
+    <button type="button" class="btn btn-dark" data-toggle="button" aria-pressed="false" autocomplete="off" onclick="cadastrarEndereco()">
+        Cadastrar Endereco
+    </button>
+  </div>
+  
+</body>
+</html>

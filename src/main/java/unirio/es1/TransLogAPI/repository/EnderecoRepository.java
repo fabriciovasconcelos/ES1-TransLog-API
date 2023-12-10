@@ -9,4 +9,7 @@ import java.util.Optional;
 @Transactional
 public interface EnderecoRepository extends JpaRepository<Endereco, Long> {
     Optional<Endereco> findById(Long id);
+
+    @Override
+    void deleteById(Long id);
 }
