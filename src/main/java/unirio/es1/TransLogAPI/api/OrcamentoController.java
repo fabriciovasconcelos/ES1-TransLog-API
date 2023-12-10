@@ -9,6 +9,7 @@ import unirio.es1.TransLogAPI.domain.dto.OrcamentoDTO;
 import unirio.es1.TransLogAPI.service.OrcamentoService;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("api/orcamento")
@@ -34,4 +35,10 @@ public class OrcamentoController {
         return !orcamentos.isEmpty() ? ResponseEntity.ok(orcamentos) : ResponseEntity.notFound().build();
     }
 
+    @GetMapping("/{orcamentoId}")
+    public ResponseEntity<Optional<Orcamento>> getOrcamentoById(@PathVariable Long orcamentoId){
+        Optional<Orcamento> orcamento = service.findById(orcamentoId);
+
+        return orcamento.isPresent() ? ResponseEntity.ok(orcamento) : ResponseEntity.notFound().build();
+    }
 }
