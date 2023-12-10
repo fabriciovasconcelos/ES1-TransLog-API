@@ -50,4 +50,11 @@ public class ServicoController {
 
         return ResponseEntity.ok(servicos);
     }
+
+    @GetMapping("/{servicoId}")
+    public ResponseEntity<Optional<Servico>> getServicoById(@PathVariable Long servicoId){
+        Optional<Servico> servico = service.findById(servicoId);
+
+        return servico.isPresent() ? ResponseEntity.ok(servico) : ResponseEntity.notFound().build();
+    }
 }
