@@ -6,6 +6,20 @@ async function getServicoId(){
     });
 }
 
+async function putServico(servicoId, status){
+    let auth = localStorage.getItem('Authorization');
+    const destino = await fetch(`http://localhost:8080/api/servico/${servicoId}/avaliar-orcamento?status=${status}`, {
+        method: "PUT",
+        headers: new Headers({
+            Authorization: auth,
+        }),
+    });
+    
+    if (destino.ok){
+        window.location.href = "listagem.html";
+    }
+}
+
 async function registrarOrcamento(){
     let auth = window.localStorage.getItem('Authorization');
     custoEmbalagem = document.getElementById('custoEmbalagem').value
@@ -31,7 +45,7 @@ async function registrarOrcamento(){
     });
 
     if(response.ok){
-        window.location.href = "listagem.html";
+        putServico(servicoId, 'AGUARDANDO')
     }
 }
 
