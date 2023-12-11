@@ -73,5 +73,6 @@ getCargo();
 
 function openInfo (servicoId){
     window.localStorage.setItem('servicoId', servicoId)
-    window.location.href = "/ES1-TransLog-API/view/view/info.html";
+    window.location.href = "info.html";
+    
 }
