@@ -80,6 +80,10 @@ body {
     text-align: center;
 }
 
+.pedido button{
+    margin-right: 0.5%;
+}
+
 .form-control {
     padding: 2%;
 }

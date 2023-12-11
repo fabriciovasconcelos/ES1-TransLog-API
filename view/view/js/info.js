@@ -66,9 +66,9 @@ async function showServico(servico){
   if(servico.status === 'AGUARDANDO'){
   
     let opcoes = `
-        <div class="btn-group" role="group" aria-label="Basic example">
-        <button type="button" class="btn btn-primary" onclick="putServico(${servico.id}, 'APROVADO')">Aceitar</button>
-        <button type="button" class="btn btn-primary" onclick="putServico(${servico.id}, 'REJEITADO')">Rejeitar</button>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <button type="button" class="btn btn-success" onclick="putServico(${servico.id}, 'APROVADO')">Aceitar</button>
+        <button type="button" class="btn btn-danger" onclick="putServico(${servico.id}, 'REJEITADO')">Rejeitar</button>
         </div>
     `
 
