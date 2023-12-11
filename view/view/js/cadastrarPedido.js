@@ -156,7 +156,7 @@ async function registrarServico(){
             enderecoBuscaId: origem,
             enderecoEntregaId: destino,
             produtoId: produto,
-            pagamentoId: parseInt(pagamento),
+            pagamentoId: pagamento,
             remetenteId: parseInt(rementente),
             destinatarioId: parseInt(destinatario),
             status: 'AGUARDANDO'

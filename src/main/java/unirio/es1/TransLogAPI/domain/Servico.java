@@ -8,6 +8,14 @@ enum Status {
     AGUARDANDO,
     REJEITADO_NA_COLETA
 }
+
+enum Pagamento {
+    DEBITO,
+    CREDITO,
+    BOLETO,
+    PIX
+}
+
 @Entity
 @Table(name = "servico")
 public class Servico {
@@ -29,8 +37,7 @@ public class Servico {
     @JoinColumn(name = "produto_id")
     private Produto produto;
 
-    @OneToOne
-    @JoinColumn(name = "pagamento_id")
+    @Enumerated(EnumType.STRING)
     private Pagamento pagamento;
 
     @ManyToOne
@@ -111,12 +118,12 @@ public class Servico {
         this.status = status;
     }
 
-    public Pagamento getPagamento() {
-        return pagamento;
+    public String getPagamento() {
+        return pagamento.name();
     }
 
-    public void setPagamento(Pagamento pagamento) {
-        this.pagamento = pagamento;
+    public void setPagamento(String pagamento) {
+        this.pagamento = Pagamento.valueOf(pagamento);
     }
 
     public String getStatus() {

@@ -12,7 +12,7 @@ public class ServicoDTO {
 
     private Long produtoId;
 
-    private Long pagamentoId;
+    private String pagamento;
 
     private Long remetenteId;
 
@@ -23,13 +23,13 @@ public class ServicoDTO {
     public ServicoDTO() {super();}
 
     public ServicoDTO(String descricao, Long enderecoBuscaId, Long enderecoEntregaId,
-                      Long produtoId, Long pagamentoId, Long remetenteId, Long destinatarioId,
+                      Long produtoId, String pagamento, Long remetenteId, Long destinatarioId,
                       String status) {
         this.descricao = descricao;
         this.enderecoBuscaId = enderecoBuscaId;
         this.enderecoEntregaId = enderecoEntregaId;
         this.produtoId = produtoId;
-        this.pagamentoId = pagamentoId;
+        this.pagamento = pagamento;
         this.remetenteId = remetenteId;
         this.destinatarioId = destinatarioId;
         this.status = status;
@@ -64,12 +64,12 @@ public class ServicoDTO {
 
     public void setProdutoId(Long produtoId) {this.produtoId = produtoId;}
 
-    public Long getPagamentoId() {
-        return pagamentoId;
+    public String getPagamento() {
+        return pagamento;
     }
 
-    public void setPagamentoId(Long pagamentoId) {
-        this.pagamentoId = pagamentoId;
+    public void setPagamento(String pagamento) {
+        this.pagamento = pagamento;
     }
 
     public Long getRemetenteId() {
