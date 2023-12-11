@@ -38,7 +38,7 @@ async function registrarOrcamento(){
 
 document.addEventListener("DOMContentLoaded", function (event) {
     if (!localStorage.getItem("Cargo").includes("ORCAMENTO"))
-        window.location = "/view/login.html";
+        window.location.href = "listagem.html";
 });
 
 getServicoId();
