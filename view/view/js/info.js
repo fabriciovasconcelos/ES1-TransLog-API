@@ -67,8 +67,8 @@ async function showServico(servico){
   
     let opcoes = `
         <div class="btn-group" role="group" aria-label="Basic example">
-        <button type="button" class="btn btn-primary">Aceitar</button>
-        <button type="button" class="btn btn-primary">Rejeitar</button>
+        <button type="button" class="btn btn-primary" onclick="putServico(${servico.id}, 'APROVADO')">Aceitar</button>
+        <button type="button" class="btn btn-primary" onclick="putServico(${servico.id}, 'REJEITADO')">Rejeitar</button>
         </div>
     `
 
@@ -152,6 +152,20 @@ async function getProduto(produtoId){
     let data = await produtoRequest.json();
 
     return data;
+}
+
+async function putServico(servicoId, status){
+    let auth = localStorage.getItem('Authorization');
+    const destino = await fetch(`http://localhost:8080/api/servico/${servicoId}/avaliar-orcamento?status=${status}`, {
+        method: "PUT",
+        headers: new Headers({
+            Authorization: auth,
+        }),
+    });
+    
+    if (destino.ok){
+        window.location.href = "listagem.html";
+    }
 }
 
 let servicoId = window.localStorage.getItem('servicoId')
