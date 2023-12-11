@@ -8,10 +8,10 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="css\style.css">
-     <script src="js/listagem.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+      <script src="js/intro.js"></script>
   </head>
-    
+
   <body>
     <nav>
       <div class="topnav">
@@ -22,6 +22,43 @@
       </div>
     </nav>
 
-    <script src="js/main.js" type="module"></script>
-  </body>
+    <div class ="info">
+      <div class="row">
+        <div class="column side"></div>
+        <div class="column middle">
+          <h1 class="titulo">Informações do Pedido</h1>
+
+          <h3>Endereço de Origem</h3>
+          <p>Endereço: <span id="enderecoOrigem"></span></p>
+
+          <h3>Endereço de Destino</h3>
+          <p>Estado: <span id="estadoDestino"></span></p>
+          <p>Município: <span id="municipioDestino"></span></p>
+          <p>Bairro: <span id="bairroDestino"></span></p>
+          <p>Rua: <span id="ruaDestino"></span></p>
+          <p>Número: <span id="numeroDestino"></span></p>
+          <p>Complemento: <span id="complementoDestino"></span></p>
+          <p>CEP: <span id="cepDestino"></span></p>
+
+          <h3>Informações do Produto</h3>
+          <p>Largura (cm): <span id="largura"></span></p>
+          <p>Altura (cm): <span id="altura"></span></p>
+          <p>Comprimento (cm): <span id="comprimento"></span></p>
+          <p>Peso (kg): <span id="peso"></span></p>
+
+          <h3>Destinatário</h3>
+          <p>Nome: <span id="nomeDestinatario"></span></p>
+          <p>Email: <span id="emailDestinatario"></span></p>
+          <p>Telefone: <span id="telefoneDestinatario"></span></p>
+
+          <h3>Método de Pagamento</h3>
+          <p><span id="pagamento"></span></p>
+
+          <h3>Descrição</h3>
+          <p><span id="descricao"></span></p>
+      </div>
+    <div class="column side"></div>
+    </div>
+</div>
+</body>
 </html>
