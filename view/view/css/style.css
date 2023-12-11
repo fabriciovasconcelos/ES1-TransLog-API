@@ -109,3 +109,17 @@ body {
     justify-content: center;
     align-items: center;
 }
+
+.info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.titulo {
+    white-space: nowrap;
+    font-size: 50px;
+    margin-bottom: 20px;
+}
+
