@@ -13,7 +13,7 @@ function showEnderecoOptions(enderecos) {
 
 async function getEnderecos() {
     let auth = localStorage.getItem('Authorization');
-    const enderecoRequest =  await fetch("http://localhost:8080/api/endereco/list", {
+    const enderecoRequest =  await fetch("http://localhost:8080/api/endereco/usuario", {
         method: "GET",
         headers: new Headers({
             Authorization: auth,
