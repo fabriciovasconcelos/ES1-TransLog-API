@@ -4,6 +4,8 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class ServicoDTO {
+    private Long id;
+
     private String descricao;
 
     private Long enderecoBuscaId;
@@ -22,9 +24,10 @@ public class ServicoDTO {
 
     public ServicoDTO() {super();}
 
-    public ServicoDTO(String descricao, Long enderecoBuscaId, Long enderecoEntregaId,
+    public ServicoDTO(Long id, String descricao, Long enderecoBuscaId, Long enderecoEntregaId,
                       Long produtoId, String pagamento, Long remetenteId, Long destinatarioId,
                       String status) {
+        this.id = id;
         this.descricao = descricao;
         this.enderecoBuscaId = enderecoBuscaId;
         this.enderecoEntregaId = enderecoEntregaId;
@@ -35,6 +38,13 @@ public class ServicoDTO {
         this.status = status;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getDescricao() {
         return descricao;

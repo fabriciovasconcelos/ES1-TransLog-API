@@ -45,12 +45,14 @@ public class ServicoService {
     }
 
     public Optional<Servico> findById(Long id){
-        if(securityService.isFuncionario()) {
-            return repository.findById(id);
+        Optional<Servico> servico =  repository.findById(id);
+
+        if(securityService.isFuncionario() || servico.isEmpty() ||
+            servico.get().getRemetente().getId().equals(securityService.idLogado())){
+            return servico;
         }
-        else{
-            throw new AuthorizationException("Acesso negado.");
-        }
+
+        throw new AuthorizationException("Acesso negado.");
     }
 
     public List<Servico> getServicos(){

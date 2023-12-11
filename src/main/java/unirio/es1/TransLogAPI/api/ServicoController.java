@@ -10,6 +10,7 @@ import unirio.es1.TransLogAPI.service.ServicoService;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("api/servico")
@@ -23,9 +24,11 @@ public class ServicoController {
     private ServicoConverter converter;
 
     @PostMapping
-    public Servico post(@RequestBody ServicoDTO dto){
+    public ServicoDTO post(@RequestBody ServicoDTO dto){
         Servico servico = converter.dtoToEntity(dto);
-        return service.save(servico);
+        Servico servicoSalvo = service.save(servico);
+
+        return converter.entityToDTO(servicoSalvo);
     }
 
     @PutMapping("/{id}/avaliar-orcamento")
@@ -39,22 +42,26 @@ public class ServicoController {
     }
 
     @GetMapping("/list")
-    public ResponseEntity<List<Servico>> get(){
-       return new ResponseEntity<>(service.getServicos(), HttpStatus.OK);
+    public ResponseEntity<List<ServicoDTO>> get(){
+        List<Servico> servicos = service.getServicos();
+        List<ServicoDTO> servicoDTOS = servicos.stream().map(servico -> converter.entityToDTO(servico)).collect(Collectors.toList());
+        return new ResponseEntity<>(servicoDTOS, HttpStatus.OK);
     }
 
 
     @GetMapping("/manager/{managerId}")
-    public ResponseEntity<List<Servico>> get(@PathVariable Long managerId){
+    public ResponseEntity<List<ServicoDTO>> get(@PathVariable Long managerId){
         List<Servico> servicos = service.getServicosByRemetente(managerId);
+        List<ServicoDTO> servicoDTOS = servicos.stream().map(servico -> converter.entityToDTO(servico)).collect(Collectors.toList());
 
-        return ResponseEntity.ok(servicos);
+        return ResponseEntity.ok().body(servicoDTOS);
     }
 
     @GetMapping("/{servicoId}")
-    public ResponseEntity<Optional<Servico>> getServicoById(@PathVariable Long servicoId){
+    public ResponseEntity<ServicoDTO> getServicoById(@PathVariable Long servicoId){
         Optional<Servico> servico = service.findById(servicoId);
 
-        return servico.isPresent() ? ResponseEntity.ok(servico) : ResponseEntity.notFound().build();
+
+        return servico.isPresent() ? ResponseEntity.ok(converter.entityToDTO(servico.get())) : ResponseEntity.notFound().build();
     }
 }

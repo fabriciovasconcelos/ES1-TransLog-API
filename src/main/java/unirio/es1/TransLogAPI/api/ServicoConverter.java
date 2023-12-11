@@ -26,11 +26,15 @@ public class ServicoConverter {
     public ServicoDTO entityToDTO(Servico servico){
         ServicoDTO dto = new ServicoDTO();
 
+        dto.setId(servico.getId());
         dto.setDescricao(servico.getDescricao());
         dto.setEnderecoBuscaId(servico.getEnderecoBusca().getId());
         dto.setEnderecoEntregaId(servico.getEnderecoEntrega().getId());
         dto.setProdutoId(servico.getProduto().getId());
         dto.setPagamento(servico.getPagamento());
+        dto.setStatus(servico.getStatus());
+        dto.setDestinatarioId(servico.getDestinatario().getId());
+        dto.setRemetenteId(servico.getRemetente().getId());
         dto.setStatus(servico.getStatus());
 
         return dto;
@@ -39,7 +43,7 @@ public class ServicoConverter {
     public Servico dtoToEntity(ServicoDTO dto){
         Servico servico = new Servico();
 
-
+        servico.setId(dto.getId());
         servico.setDescricao(dto.getDescricao());
         servico.setEnderecoBusca(enderecoService.getById(dto.getEnderecoBuscaId()).get());
         servico.setEnderecoEntrega(enderecoService.getById(dto.getEnderecoEntregaId()).get());
