@@ -1,8 +1,9 @@
-async function show(servico){
+async function showServico(servico){
     let destinatario = await getDestinatario(servico.destinatarioId);
     let enderecoBusca = await getEndereco(servico.enderecoBuscaId);
     let enderecoEntrega = await getEndereco(servico.enderecoEntregaId);
     let produto = await getProduto(servico.produtoId);
+
   let lines = `<ul class="list-group">
                 <li class="list-group-item">Estado: ${enderecoBusca.estado}</li>
                 <li class="list-group-item">Município: ${enderecoBusca.municipio}</li>
@@ -57,11 +58,34 @@ async function show(servico){
   document.getElementById("servico_descricao").innerHTML = lines;
 
     lines = `<ul class="list-group">
-                            <li class="list-group-item">Nome: ${servico.status}</li>
+                            <li class="list-group-item"> ${servico.status}</li>
                             </ul>`
 
   document.getElementById("servico_status").innerHTML = lines;
 
+  if(servico.status === 'AGUARDANDO'){
+    console.log('oi');
+    let opcoes = `
+        <div class="btn-group" role="group" aria-label="Basic example">
+        <button type="button" class="btn btn-primary">Aceitar</button>
+        <button type="button" class="btn btn-primary">Rejeitar</button>
+        </div>
+    `
+
+    document.getElementById("aprovacao").innerHTML = opcoes;
+  }
+
+}
+
+async function showOrcamento(orcamento){
+    let lines = `<ul class="list-group">
+    <li class="list-group-item">Custo da Embalagem: ${orcamento.custoEmbalagem}</li>
+    <li class="list-group-item">Taxa de Desistência: ${orcamento.taxaDesistencia}</li>
+    <li class="list-group-item">Valor do Orçamento: ${orcamento.valor}</li>
+    <li class="list-group-item">Prazo de Entrega (dias): ${orcamento.prazo}</li>
+    </ul>`
+
+    document.getElementById("orcamento").innerHTML = lines;
 }
 
 async function getServico(servicoId){
@@ -74,7 +98,7 @@ async function getServico(servicoId){
     });
 
     let data = await servicoRequest.json();;
-    show(data);
+    showServico(data);
 }
 
 async function getDestinatario(destinatarioId){
@@ -100,7 +124,7 @@ async function getOrcamento(servicoId){
     });
 
     let data = await orcamentoRequest.json();
-    await show(data);
+    await showOrcamento(data);
 }
 
 async function getEndereco(enderecoId) {
@@ -132,3 +156,4 @@ async function getProduto(produtoId){
 
 let servicoId = window.localStorage.getItem('servicoId')
 getServico(servicoId);
+getOrcamento(servicoId);

@@ -36,7 +36,7 @@ public class OrcamentoService {
     }
 
     public Optional<Orcamento> findById(Long servicoId){
-        Optional<Orcamento> orcamento = findById(servicoId);
+        Optional<Orcamento> orcamento = repository.findById(servicoId);
 
         if(securityService.isOrcamento() || orcamento.isEmpty() ||
                 orcamento.get().getServico().getRemetente().getId().equals(securityService.idLogado())) {
