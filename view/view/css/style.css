@@ -137,3 +137,8 @@ body {
     margin-bottom: 20px;
 }
 
+.registrarOrcamento{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

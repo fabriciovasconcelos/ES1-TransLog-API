@@ -1,8 +1,33 @@
 function show(servicos) {
     let line = "";
     let i = 1;
+
+    let cargo = window.localStorage.getItem('Cargo');
+
     servicos.forEach(servico => {
-        line += `
+
+        if(cargo.includes("ORCAMENTO")){
+            line += `
+            <tr>
+                <th scope="row">${i}</th>
+                <td scope="row">${servico.descricao}</td>
+                <td scope="row">${servico.status}</td>
+                <td scope ="row" class="expandirInformacoes">
+                    <button class="btn btn-info btn-sm" type="button" data-toggle="tooltip" data-placement="top" title="Info" onclick="openInfo(${servico.id})">
+                        Info
+                    </button>
+                </td>
+                <td scope ="row">
+                <div class="registrarOrcamento">   
+                    <button class="btn btn-info btn-sm" type="button" data-toggle="tooltip" data-placement="top" title="Info" onclick="openOrcamento(${servico.id})">
+                        Orçamento
+                    </button>
+                </div>
+                </td>
+            </tr>
+        `;
+        }else{
+            line += `
             <tr>
                 <th scope="row">${i}</th>
                 <td scope="row">${servico.descricao}</td>
@@ -14,11 +39,40 @@ function show(servicos) {
                 </td>
             </tr>
         `;
+        }
+
+        
         i++;
         
     });
     
     document.getElementById("servicos").innerHTML = line;
+}
+
+function showHeaders(){
+    let line = "";
+    let cargo = window.localStorage.getItem('Cargo');
+
+    if(cargo.includes("ORCAMENTO")){
+        line = `
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Descrição</th>
+            <th scope="col">Status</th>
+            <th scope="col">Informações</th>
+            <th scope="col">Orçamento</th>
+        </tr>`
+    }else{
+        line = `
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Descrição</th>
+            <th scope="col">Status</th>
+            <th scope="col">Informações</th>
+        </tr>`
+    }
+
+    document.getElementById("servicosCabecalho").innerHTML = line;
 }
 
 async function getServicos() {
@@ -43,6 +97,7 @@ async function getServicos() {
     });
     let data = await servicosRequest.json();
     console.log(data);
+    showHeaders();
     show(data);
 }
 
@@ -75,4 +130,9 @@ function openInfo (servicoId){
     window.localStorage.setItem('servicoId', servicoId)
     window.location.href = "info.html";
     
+}
+
+function openOrcamento(servicoId){
+    window.localStorage.setItem('servicoId', servicoId)
+    window.location.href = "orcamentoPedido.html";
 }
