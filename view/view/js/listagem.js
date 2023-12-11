@@ -120,7 +120,7 @@ async function getCargo(){
 
 document.addEventListener("DOMContentLoaded", function (event) {
     if (!localStorage.getItem("Authorization"))
-        window.location = "/view/login.html";
+        window.location.href = "index.html";;
 });
 
 getServicos();
