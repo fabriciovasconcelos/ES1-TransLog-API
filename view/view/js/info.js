@@ -11,6 +11,18 @@ function show(servico){
                 </ul>`
 
   document.getElementById("enderecoOrigem").innerHTML = lines;
+
+    lines = `<ul class="list-group">
+                <li class="list-group-item">Estado: ${servico.enderecoEntrega.estado}</li>
+                <li class="list-group-item">Municipio: ${servico.enderecoEntrega.municipio}</li>
+                <li class="list-group-item">Bairro: ${servico.enderecoEntrega.bairro}</li>
+                <li class="list-group-item">Rua: ${servico.enderecoEntrega.rua}</li>
+                <li class="list-group-item">Número: ${servico.enderecoEntrega.numero}</li>
+                <li class="list-group-item">Complemento: ${servico.enderecoEntrega.complemento}</li>
+                <li class="list-group-item">CEP: ${servico.enderecoEntrega.cep}</li>
+                </ul>`
+
+  document.getElementById("enderecoDestino").innerHTML = lines;
 }
 
 async function getServico(servicoId){
