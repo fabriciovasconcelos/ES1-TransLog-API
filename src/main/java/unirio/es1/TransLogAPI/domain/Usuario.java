@@ -3,6 +3,7 @@ package unirio.es1.TransLogAPI.domain;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -15,6 +16,7 @@ public class Usuario {
     private Long id;
 
     private String nome;
+    @Column(unique = true)
     private String email;
     private String telefone;
     private String cpf;
@@ -23,8 +25,7 @@ public class Usuario {
     @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(name = "usuario_cargo")
     @Column(name = "cargo")
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    private Set<Integer> cargos;
+    private Set<Integer> cargos = new HashSet<>();
 
     @OneToMany(mappedBy = "remetente")
     private List<Servico> servicos;

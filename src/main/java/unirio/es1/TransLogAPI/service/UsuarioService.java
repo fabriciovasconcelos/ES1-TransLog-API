@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import unirio.es1.TransLogAPI.domain.CargoEnum;
 import unirio.es1.TransLogAPI.domain.Usuario;
 import unirio.es1.TransLogAPI.security.AuthorizationException;
 import unirio.es1.TransLogAPI.repository.UsuarioRepository;
@@ -35,6 +36,7 @@ public class UsuarioService {
 
     public Usuario save(Usuario usuario){
         usuario.setSenha(this.bCryptPasswordEncoder.encode(usuario.getSenha()));
+        usuario.addProfile(CargoEnum.CLIENTE);
         return usuarioRepository.save(usuario);
     }
 
