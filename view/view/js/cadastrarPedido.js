@@ -40,7 +40,7 @@ async function registrarEndereco(){
     let complementoDestino = document.getElementById('complementoDestino').value;
     let cepDestino = document.getElementById('cepDestino').value;
 
-    const destino = await fetch("http://localhost:8080/api/endereco", {
+    const destino = await fetch("http://localhost:8080/api/endereco/destinatario", {
         method: "POST",
         headers: new Headers({
             "Content-Type": "application/json; charset=utf8",

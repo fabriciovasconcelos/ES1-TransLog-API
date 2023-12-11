@@ -18,7 +18,7 @@ public class Endereco {
     private String complemento;
     private String cep;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.DETACH, })
     @JoinColumn(name = "usuario_id")
     private Usuario usuario;
 

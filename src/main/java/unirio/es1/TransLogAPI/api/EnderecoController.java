@@ -23,9 +23,19 @@ public class EnderecoController {
     private EnderecoConverter enderecoConverter;
 
     @PostMapping
-    public Endereco post(@RequestBody EnderecoDTO dto){
+    public EnderecoDTO post(@RequestBody EnderecoDTO dto){
         Endereco endereco = enderecoConverter.dtoToEntity(dto);
-        return service.save(endereco);
+        Endereco enderecoSalvo = service.save(endereco);
+
+        return enderecoConverter.entityToDTO(enderecoSalvo);
+    }
+
+    @PostMapping("/destinatario")
+    public EnderecoDTO postDestinatario(@RequestBody EnderecoDTO dto){
+        Endereco endereco = enderecoConverter.dtoToEntity(dto);
+        Endereco enderecoSalvo = service.saveDestinatario(endereco);
+
+        return enderecoConverter.entityToDTO(enderecoSalvo);
     }
 
     @GetMapping("/{id}")

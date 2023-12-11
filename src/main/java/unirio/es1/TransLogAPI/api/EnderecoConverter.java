@@ -15,6 +15,7 @@ public class EnderecoConverter {
     public EnderecoDTO entityToDTO(Endereco endereco){
         EnderecoDTO dto = new EnderecoDTO();
 
+        dto.setId(endereco.getId());
         dto.setEstado(endereco.getEstado());
         dto.setMunicipio(endereco.getMunicipio());
         dto.setBairro(endereco.getBairro());
@@ -22,7 +23,9 @@ public class EnderecoConverter {
         dto.setNumero(endereco.getNumero());
         dto.setComplemento(endereco.getComplemento());
         dto.setCep(endereco.getCep());
-        dto.setUsuarioId(endereco.getUsuario().getId());
+        if(endereco.getUsuario() != null) {
+            dto.setUsuarioId(endereco.getUsuario().getId());
+        }
 
         return dto;
     }
@@ -30,6 +33,7 @@ public class EnderecoConverter {
     public Endereco dtoToEntity(EnderecoDTO dto){
         Endereco endereco = new Endereco();
 
+        endereco.setId(dto.getId());
         endereco.setEstado(dto.getEstado());
         endereco.setMunicipio(dto.getMunicipio());
         endereco.setBairro(dto.getBairro());

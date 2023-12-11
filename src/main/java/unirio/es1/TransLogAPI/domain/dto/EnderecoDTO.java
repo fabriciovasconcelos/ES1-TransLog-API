@@ -4,6 +4,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class EnderecoDTO {
+    private Long id;
     private String estado;
     private String municipio;
 
@@ -28,6 +29,14 @@ public class EnderecoDTO {
         this.complemento = complemento;
         this.cep = cep;
         this.usuarioId = usuarioId;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getEstado() {
