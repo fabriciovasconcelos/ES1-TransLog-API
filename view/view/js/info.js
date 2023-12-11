@@ -64,7 +64,7 @@ async function showServico(servico){
   document.getElementById("servico_status").innerHTML = lines;
 
   if(servico.status === 'AGUARDANDO'){
-    console.log('oi');
+  
     let opcoes = `
         <div class="btn-group" role="group" aria-label="Basic example">
         <button type="button" class="btn btn-primary">Aceitar</button>

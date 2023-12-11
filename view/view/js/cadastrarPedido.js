@@ -159,7 +159,7 @@ async function registrarServico(){
             pagamento: pagamento,
             remetenteId: parseInt(rementente),
             destinatarioId: parseInt(destinatario),
-            status: 'AGUARDANDO'
+            status: 'AGUARDANDO_ORCAMENTO'
         }),
     });
 

@@ -6,7 +6,8 @@ enum Status {
     APROVADO,
     REJEITADO,
     AGUARDANDO,
-    REJEITADO_NA_COLETA
+    REJEITADO_NA_COLETA,
+    AGUARDANDO_ORCAMENTO
 }
 
 enum Pagamento {
