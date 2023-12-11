@@ -1,14 +1,9 @@
-package unirio.es1.TransLogAPI.domain;
+package unirio.es1.TransLogAPI.domain.dto;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import jakarta.persistence.*;
+import org.springframework.stereotype.Component;
 
-@Entity
-@Table(name = "endereco")
-public class Endereco {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+@Component
+public class EnderecoDTO {
     private String estado;
     private String municipio;
 
@@ -18,14 +13,13 @@ public class Endereco {
     private String complemento;
     private String cep;
 
-    @ManyToOne
-    @JoinColumn(name = "usuario_id")
-    private Usuario usuario;
+    private Long usuarioId;
 
-    public Endereco() {}
-
-    public Endereco(String estado, String municipio, String bairro, String rua, Integer numero, String complemento, String cep, Usuario usuario) {
+    public EnderecoDTO() {
         super();
+    }
+
+    public EnderecoDTO(String estado, String municipio, String bairro, String rua, Integer numero, String complemento, String cep, Long usuarioId) {
         this.estado = estado;
         this.municipio = municipio;
         this.bairro = bairro;
@@ -33,15 +27,7 @@ public class Endereco {
         this.numero = numero;
         this.complemento = complemento;
         this.cep = cep;
-        this.usuario = usuario;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
+        this.usuarioId = usuarioId;
     }
 
     public String getEstado() {
@@ -100,11 +86,11 @@ public class Endereco {
         this.cep = cep;
     }
 
-    public Usuario getUsuario() {
-        return usuario;
+    public Long getUsuarioId() {
+        return usuarioId;
     }
 
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
+    public void setUsuarioId(Long usuarioId) {
+        this.usuarioId = usuarioId;
     }
 }

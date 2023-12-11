@@ -1,15 +1,3 @@
-CREATE TABLE IF NOT EXISTS endereco(
-    id BIGINT AUTO_INCREMENT NOT NULL,
-    estado VARCHAR(30) NOT NULL,
-    municipio VARCHAR(30) NOT NULL,
-    bairro VARCHAR(30) NOT NULL,
-    rua VARCHAR(30) NOT NULL,
-    numero INT NOT NULL,
-    complemento VARCHAR(70) NOT NULL,
-    cep VARCHAR(8) NOT NULL,
-    PRIMARY KEY(id)
-);
-
 CREATE TABLE IF NOT EXISTS produto(
     id BIGINT AUTO_INCREMENT NOT NULL,
     largura INT NOT NULL,
@@ -43,6 +31,20 @@ CREATE TABLE IF NOT EXISTS destinatario(
     telefone VARCHAR(11) NOT NULL,
     PRIMARY KEY(id)
 );
+
+CREATE TABLE IF NOT EXISTS endereco(
+                                       id BIGINT AUTO_INCREMENT NOT NULL,
+                                       estado VARCHAR(30) NOT NULL,
+    municipio VARCHAR(30) NOT NULL,
+    bairro VARCHAR(30) NOT NULL,
+    rua VARCHAR(30) NOT NULL,
+    numero INT NOT NULL,
+    complemento VARCHAR(70) NOT NULL,
+    cep VARCHAR(8) NOT NULL,
+    usuario_id BIGINT,
+    PRIMARY KEY(id),
+    FOREIGN KEY (usuario_id) REFERENCES usuario(id)
+    );
 
 CREATE TABLE IF NOT EXISTS servico(
     id BIGINT AUTO_INCREMENT NOT NULL,

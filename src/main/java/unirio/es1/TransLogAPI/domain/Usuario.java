@@ -27,6 +27,9 @@ public class Usuario {
     @Column(name = "cargo")
     private Set<Integer> cargos = new HashSet<>();
 
+    @OneToMany(mappedBy = "usuario")
+    private List<Endereco> enderecos;
+
     @OneToMany(mappedBy = "remetente")
     private List<Servico> servicos;
 

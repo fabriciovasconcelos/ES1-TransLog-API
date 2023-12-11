@@ -34,6 +34,11 @@ public class EnderecoService {
         throw new AuthorizationException("Acesso negado.");
     }
 
+    public List<Endereco> getEnderecosUsuario(){
+        Long usuarioId = securityService.idLogado();
+        return repository.findByUsuarioId(usuarioId);
+    }
+
     public void deleteEndereco(Long id){
         repository.deleteById(id);
     }
