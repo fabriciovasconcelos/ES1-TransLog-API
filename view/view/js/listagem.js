@@ -54,6 +54,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
 getServicos();
 
 function openInfo (servicoId){
-
-    window.open("/ES1-TransLog-API/view/view/info.html");
+    window.localStorage.setItem('servicoId', servicoId)
+    window.location.href = "/ES1-TransLog-API/view/view/info.html";
 }

@@ -68,7 +68,15 @@ body {
     margin-right: 10%;
 }
 
+.pedido h3{
+    text-align: center;
+}
+
 .pedido h2{
+    text-align: center;
+}
+
+.pedido h1{
     text-align: center;
 }
 

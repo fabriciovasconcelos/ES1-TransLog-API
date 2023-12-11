@@ -34,9 +34,9 @@ public class OrcamentoController {
         return !orcamentos.isEmpty() ? ResponseEntity.ok(orcamentos) : ResponseEntity.notFound().build();
     }
 
-    @GetMapping("/{orcamentoId}")
-    public ResponseEntity<Optional<Orcamento>> getOrcamentoById(@PathVariable Long orcamentoId){
-        Optional<Orcamento> orcamento = service.findById(orcamentoId);
+    @GetMapping("/{servicoId}")
+    public ResponseEntity<Optional<Orcamento>> getOrcamentoById(@PathVariable Long servicoId){
+        Optional<Orcamento> orcamento = service.findById(servicoId);
 
         return orcamento.isPresent() ? ResponseEntity.ok(orcamento) : ResponseEntity.notFound().build();
     }
