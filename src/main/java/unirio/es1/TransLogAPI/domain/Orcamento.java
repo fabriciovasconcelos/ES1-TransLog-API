@@ -2,8 +2,6 @@ package unirio.es1.TransLogAPI.domain;
 
 import jakarta.persistence.*;
 
-import java.util.Date;
-
 @Entity
 @Table(name = "orcamento")
 public class Orcamento {

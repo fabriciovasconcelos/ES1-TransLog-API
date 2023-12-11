@@ -1,6 +1,5 @@
 package unirio.es1.TransLogAPI.domain;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 
 import java.util.HashSet;
