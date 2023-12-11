@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import unirio.es1.TransLogAPI.domain.Endereco;
-import unirio.es1.TransLogAPI.domain.Orcamento;
 import unirio.es1.TransLogAPI.domain.dto.EnderecoDTO;
 import unirio.es1.TransLogAPI.service.EnderecoService;
 

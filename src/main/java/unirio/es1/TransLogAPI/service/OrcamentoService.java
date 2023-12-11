@@ -35,12 +35,12 @@ public class OrcamentoService {
         }
     }
 
-    public Optional<Orcamento> findById(Long orcamentoId){
-        Optional<Orcamento> orcamento = findById(orcamentoId);
+    public Optional<Orcamento> findById(Long servicoId){
+        Optional<Orcamento> orcamento = findById(servicoId);
 
         if(securityService.isOrcamento() || orcamento.isEmpty() ||
                 orcamento.get().getServico().getRemetente().getId().equals(securityService.idLogado())) {
-            return repository.findById(orcamentoId);
+            return repository.findById(servicoId);
         }
         else {
             throw new AuthorizationException("Acesso negado.");

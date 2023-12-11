@@ -9,7 +9,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
-      <script src="js/intro.js"></script>
+      <script src="js/info.js"></script>
   </head>
 
   <body>
@@ -22,43 +22,69 @@
       </div>
     </nav>
 
-    <div class ="info">
-      <div class="row">
-        <div class="column side"></div>
-        <div class="column middle">
-          <h1 class="titulo">Informações do Pedido</h1>
+    
+    <div class="row">
+      <div class="column side"></div>
+      <div class="column middle">
+        <div class ="pedido">
+          <h2 class="titulo">Informações do Pedido</h2>
 
           <h3>Endereço de Origem</h3>
-          <p>Endereço: <span id="enderecoOrigem"></span></p>
-
+            <div id="enderecoOrigem">
+            </div>
+  
           <h3>Endereço de Destino</h3>
-          <p>Estado: <span id="estadoDestino"></span></p>
-          <p>Município: <span id="municipioDestino"></span></p>
-          <p>Bairro: <span id="bairroDestino"></span></p>
-          <p>Rua: <span id="ruaDestino"></span></p>
-          <p>Número: <span id="numeroDestino"></span></p>
-          <p>Complemento: <span id="complementoDestino"></span></p>
-          <p>CEP: <span id="cepDestino"></span></p>
-
+          <ul class="list-group" id="enderecoDestino">
+            <li class="list-group-item"></li>
+            <li class="list-group-item"></li>
+            <li class="list-group-item"></li>
+            <li class="list-group-item"></li>
+            <li class="list-group-item"></li>
+            <li class="list-group-item"></li>
+            <li class="list-group-item"></li>
+          </ul>
+  
           <h3>Informações do Produto</h3>
+          <ul class="list-group" id="infoProduto">
+            <li class="list-group-item"></li>
+            <li class="list-group-item"></li>
+            <li class="list-group-item"></li>
+            <li class="list-group-item"></li>
+          </ul>
+
           <p>Largura (cm): <span id="largura"></span></p>
           <p>Altura (cm): <span id="altura"></span></p>
           <p>Comprimento (cm): <span id="comprimento"></span></p>
           <p>Peso (kg): <span id="peso"></span></p>
-
+  
           <h3>Destinatário</h3>
+          <ul class="list-group" id="destinatario">
+            <li class="list-group-item"></li>
+            <li class="list-group-item"></li>
+            <li class="list-group-item"></li>
+          </ul>
+
           <p>Nome: <span id="nomeDestinatario"></span></p>
           <p>Email: <span id="emailDestinatario"></span></p>
           <p>Telefone: <span id="telefoneDestinatario"></span></p>
-
+  
           <h3>Método de Pagamento</h3>
-          <p><span id="pagamento"></span></p>
+          <ul class="list-group" id="pagamento">
+            <li class="list-group-item"></li>
+          </ul>
 
+          <p><span id="pagamento"></span></p>
+  
           <h3>Descrição</h3>
+          <ul class="list-group" id="descricao">
+            <li class="list-group-item"></li>
+          </ul>
+
           <p><span id="descricao"></span></p>
+        </div>
+
+      <div class="column side"></div>
       </div>
-    <div class="column side"></div>
     </div>
-</div>
-</body>
+  </body>
 </html>
