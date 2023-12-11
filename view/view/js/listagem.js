@@ -78,6 +78,8 @@ function showHeaders(){
 async function getServicos() {
     let auth = localStorage.getItem('Authorization');
     console.log(auth);
+
+
     const usuarioRequest = await fetch("http://localhost:8080/api/usuario", {
         method: "GET",
         headers: new Headers({
@@ -87,9 +89,12 @@ async function getServicos() {
 
     let usuario = await usuarioRequest.json();
     let usuarioId = usuario.id;
+    let cargo = usuario.cargos
     console.log(usuarioId);
 
-    const servicosRequest = await fetch("http://localhost:8080/api/servico/manager/" + usuarioId, {
+    let url = cargo.includes("ORCAMENTO") ? "http://localhost:8080/api/servico/list" : `http://localhost:8080/api/servico/manager/${usuarioId}`
+
+    const servicosRequest = await fetch(url, {
         method: "GET",
         headers: new Headers({
             Authorization: auth
