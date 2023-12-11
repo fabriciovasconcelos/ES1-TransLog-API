@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="pt">
+<head>
+  <title>TransLog</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/orcamentoPedido.js"></script>
+</head>
+
+<body>
+  <nav>
+    <div class="topnav">
+      <a href="listagem.html">TransLog</a>
+      <a href="listagem.html">Lista de Pedidos</a>
+      <a href="cadastrarPedido.html">Realizar Pedidos</a>
+      <a href="listarEnderecos.html">Listar enderecos</a>
+    </div>
+  </nav>
+  <div class="row">
+    <div class="column side"></div>
+    <div class="column middle">
+        <form class="pedido">
+            <h2>Orcamento do Servico</h2>
+            <div class="mb-3">
+                <label for="custoEmbalagem" class="form-label">Custo da Embalagem</label>
+                <input type="number" class="form-control" id="custoEmbalagem"  required="required">
+            </div>
+
+            <div class="mb-3">
+                <label for="taxaDesistencia" class="form-label">Taxa de Desistencia</label>
+                <input type="number" class="form-control" id="taxaDesistencia" required="required">
+            </div>
+
+            <div class="mb-3">
+                <label for="valor" class="form-label">Valor</label>
+                <input type="number" class="form-control" id="valor" required="required">
+            </div>
+
+            <div class="mb-3">
+                <label for="prazo" class="form-label">Prazo em dias úteis</label>
+                <input type="number" class="form-control" id="prazo" required="required">
+            </div>
+
+            <div class="mb-3">
+                <label for="servico" class="form-label">Id do servico</label>
+                <input type="number" class="form-control" id="servico" required="required" readonly="readonly">
+            </div>
+
+            <div class="registrarOrcamento">
+                <button type="button" class="btn btn-dark" onclick="registrarOrcamento()">Submit</button>
+            </div>
+        </form>
+    </div>
+    <div class="column side"></div>
+  </div>
+  
+</body>
+</html>

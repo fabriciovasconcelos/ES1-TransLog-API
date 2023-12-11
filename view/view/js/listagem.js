@@ -46,12 +46,30 @@ async function getServicos() {
     show(data);
 }
 
+async function getCargo(){
+    let auth = window.localStorage.getItem('Authorization');
+
+    const response = await fetch("http://localhost:8080/api/usuario", {
+        method: "GET",
+        headers: new Headers({
+            "Content-Type": "application/json; charset=utf8",
+            Accept: "application/json",
+            Authorization: auth
+        })
+    })
+
+    const usuarioData = await response.json();
+    window.localStorage.setItem('Cargo', usuarioData.cargos);
+    console.log('Cargo ' + usuarioData.cargos);
+}
+
 document.addEventListener("DOMContentLoaded", function (event) {
     if (!localStorage.getItem("Authorization"))
         window.location = "/view/login.html";
 });
 
 getServicos();
+getCargo();
 
 function openInfo (servicoId){
     window.localStorage.setItem('servicoId', servicoId)
