@@ -2,7 +2,7 @@ function show(servico){
     
   let lines = `<ul class="list-group">
                 <li class="list-group-item">Estado: ${servico.enderecoBusca.estado}</li>
-                <li class="list-group-item">Municipio: ${servico.enderecoBusca.municipio}</li>
+                <li class="list-group-item">Município: ${servico.enderecoBusca.municipio}</li>
                 <li class="list-group-item">Bairro: ${servico.enderecoBusca.bairro}</li>
                 <li class="list-group-item">Rua: ${servico.enderecoBusca.rua}</li>
                 <li class="list-group-item">Número: ${servico.enderecoBusca.numero}</li>
@@ -14,7 +14,7 @@ function show(servico){
 
     lines = `<ul class="list-group">
                 <li class="list-group-item">Estado: ${servico.enderecoEntrega.estado}</li>
-                <li class="list-group-item">Municipio: ${servico.enderecoEntrega.municipio}</li>
+                <li class="list-group-item">Município: ${servico.enderecoEntrega.municipio}</li>
                 <li class="list-group-item">Bairro: ${servico.enderecoEntrega.bairro}</li>
                 <li class="list-group-item">Rua: ${servico.enderecoEntrega.rua}</li>
                 <li class="list-group-item">Número: ${servico.enderecoEntrega.numero}</li>
@@ -23,6 +23,42 @@ function show(servico){
                 </ul>`
 
   document.getElementById("enderecoDestino").innerHTML = lines;
+
+    lines = `<ul class="list-group">
+                    <li class="list-group-item">Largura (cm): ${servico.produto.largura}</li>
+                    <li class="list-group-item">Altura (cm): ${servico.produto.altura}</li>
+                    <li class="list-group-item">Comprimento (cm): ${servico.produto.comprimento}</li>
+                    <li class="list-group-item">Peso (kg): ${servico.produto.peso}</li>
+                    </ul>`
+
+  document.getElementById("produto").innerHTML = lines;
+
+    lines = `<ul class="list-group">
+                        <li class="list-group-item">Método: ${servico.pagamento.metodo}</li>
+                        </ul>`
+
+  document.getElementById("pagamento").innerHTML = lines;
+
+    lines = `<ul class="list-group">
+                        <li class="list-group-item">Nome: ${servico.destinatario.nome}</li>
+                        <li class="list-group-item">Email: ${servico.destinatario.email}</li>
+                        <li class="list-group-item">Telefone: ${servico.destinatario.telefone}</li>
+                        </ul>`
+
+  document.getElementById("destinatario").innerHTML = lines;
+
+    lines = `<ul class="list-group">
+                            <li class="list-group-item">Descrição: ${servico.descricao}</li>
+                            </ul>`
+
+  document.getElementById("servico").innerHTML = lines;
+
+    lines = `<ul class="list-group">
+                            <li class="list-group-item">Nome: ${servico.status}</li>
+                            </ul>`
+
+  document.getElementById("servico").innerHTML = lines;
+
 }
 
 async function getServico(servicoId){
