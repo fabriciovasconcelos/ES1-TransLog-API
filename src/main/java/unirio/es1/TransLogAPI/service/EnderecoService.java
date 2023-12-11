@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import unirio.es1.TransLogAPI.domain.Endereco;
 import unirio.es1.TransLogAPI.repository.EnderecoRepository;
+import unirio.es1.TransLogAPI.security.AuthorizationException;
 
 import java.util.List;
 import java.util.Optional;
@@ -14,6 +15,8 @@ public class EnderecoService {
 
     @Autowired
     private EnderecoRepository repository;
+    @Autowired
+    private SecurityService securityService;
 
     public Endereco save(Endereco endereco){
         return repository.save(endereco);
@@ -24,7 +27,11 @@ public class EnderecoService {
     }
 
     public List<Endereco> getEnderecos(){
-        return repository.findAll();
+        if(securityService.isFuncionario()) {
+            return repository.findAll();
+        }
+
+        throw new AuthorizationException("Acesso negado.");
     }
 
     public void deleteEndereco(Long id){

@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import unirio.es1.TransLogAPI.domain.Orcamento;
 import unirio.es1.TransLogAPI.repository.OrcamentoRepository;
+import unirio.es1.TransLogAPI.security.AuthorizationException;
 
 import java.util.List;
 import java.util.Optional;
@@ -13,16 +14,36 @@ public class OrcamentoService {
 
     @Autowired
     private OrcamentoRepository repository;
+    @Autowired
+    private SecurityService securityService;
 
     public Orcamento save(Orcamento orcamento){
-        return repository.save(orcamento);
+        if(securityService.isOrcamento()) {
+            return repository.save(orcamento);
+        }
+        else{
+            throw new AuthorizationException("Acesso negado.");
+        }
     }
 
     public List<Orcamento> getOrcamentos(){
-        return repository.findAll();
+        if(securityService.isOrcamento()) {
+            return repository.findAll();
+        }
+        else{
+            throw new AuthorizationException("Acesso negado.");
+        }
     }
 
     public Optional<Orcamento> findById(Long orcamentoId){
-        return repository.findById(orcamentoId);
+        Optional<Orcamento> orcamento = findById(orcamentoId);
+
+        if(securityService.isOrcamento() || orcamento.isEmpty() ||
+                orcamento.get().getServico().getRemetente().getId().equals(securityService.idLogado())) {
+            return repository.findById(orcamentoId);
+        }
+        else {
+            throw new AuthorizationException("Acesso negado.");
+        }
     }
 }
